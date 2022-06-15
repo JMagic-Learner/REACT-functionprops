@@ -56,8 +56,10 @@ const render = (
          
         // Assignment if it is function component
         // FIRST ROUGH ATTEMPT - THE DIRTY METHOD.
-        // if (typeof type === 'function') {
-        //         console.log("The code has detected that React Component is a function")
+        if (typeof type === 'function') {
+                console.log("The code has detected that React Component is a function")
+                console.log(type);
+        }
         //         let stringVersion = "" + type;
         //         console.log(stringVersion)
         //         let firstSplit = stringVersion.split('return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("');
@@ -80,10 +82,10 @@ const render = (
 
         // THE CORRECT METHOD AS SHOWCASED BY CLASSMATE 
         if (typeof type === "function") {
-            console.log("fnProps", type);
-            const curFnReactElement = type(props);
-            console.log("function", curFnReactElement);
-            render(curFnReactElement, domElement);
+            console.log("We have detected the component as a function");
+            const ReactElementArray = new type(props); // Read Props from the Button Component.
+            console.log("This is the ReactElementArray", ReactElementArray); // This is the actual object that render can sift through for children,etc.
+            render(ReactElementArray, domElement); // Feed the dom element and 
             return;
           }
        
