@@ -2,7 +2,7 @@ import React from 'react'
 
 function Button (props) {
     
-    return(<button onClick={props.function}>+</button>
+    return(<button> {props.innerHTML}</button>
     )
     // return(<button>This is the dirty METHOD</button>)
 }

@@ -1,36 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import MyReactDOM from './myReact/MyReactDom';
-import Button from './component/Button'
 import MyReact from './myReact/MyReact';
 import './index.css';
-import App from './App';
-import { render } from '@testing-library/react';
-import { useEffect } from 'react';
-import { useState } from 'react'
-
-// import Counter from './component/Counter'
-//import reportWebVitals from './reportWebVitals';
-
-// const reactE = <section>
-//   <header>Counter:0</header>
-//   <button>+</button><button>-</button>
-// </section>;
 
 function Counter( props) {
   console.log(props.data);
   
-  function updateCounter() {
+  function updateCounterPlus() {
   console.log("updateCounter has been logged")
   props.parentFunction(props.data+1);
-
-
   }
+
+  function updateCounterSub() {
+    console.log("updateCounter has been logged")
+    props.parentFunction(props.data-1);
+    }
 
   return ( <div id="counter-container">
   <p>You clicked {props.data} times</p>
-  <button onClick={updateCounter}>
-    Click me
+  <button onClick={updateCounterPlus}>
+    Click me to add
+  </button>
+  <button onClick={updateCounterSub}>
+    Click me to subtract
   </button>
 </div>)
 }
@@ -44,7 +36,6 @@ class Main extends MyReact.Component {
       title: "Counter"
     }
     this.datapull = this.datapull.bind(this)
-    // this.handleSubtract = this.handleSubtract.bind(this)
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -59,9 +50,9 @@ class Main extends MyReact.Component {
   }
 
   datapull(childData) {
-    console.log("datapull has been triggered",childData); // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
+    console.log("datapull has been triggered",childData); // LOGS DATA FROM CHILD 
     this.setState({
-            counter: this.state.counter + 1
+            counter: childData
           })
           setTimeout(function()
           {
