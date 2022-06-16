@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/REACT-functionprops/static/css/main.bb759c80.css",
+    "main.js": "/REACT-functionprops/static/js/main.526611a7.js",
+    "static/media/logo.svg": "/REACT-functionprops/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/REACT-functionprops/index.html",
+    "main.bb759c80.css.map": "/REACT-functionprops/static/css/main.bb759c80.css.map",
+    "main.526611a7.js.map": "/REACT-functionprops/static/js/main.526611a7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bb759c80.css",
+    "static/js/main.526611a7.js"
+  ]
+}
