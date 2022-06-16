@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../component/Button'
+import MyReact from './MyReact'
 
 const render = (
     reactElement,
@@ -11,15 +11,6 @@ const render = (
     if (reactElement === undefined) {
         return;
     }
-    // if (reactElement) {
-    //     console.log("We have detected an react element");
-    // }
-    // if (typeof reactElement === 'object') {
-    //     console.log("We have detected an object");
-    // }
-
-    
-
     if (typeof reactElement === 'string' | typeof reactElement === 'number') {
         console.log ("We have detected a react element string or a number")
         curDom =
@@ -29,14 +20,14 @@ const render = (
    
         /// if type is ClassCompoennt
         // Jason Ma: Comments 6/14/2022 - Following code is from ANTRA class.
-        if (type.prototype instanceof React.Component) {
+        if (type.prototype instanceof MyReact.Component) {
             console.log("we have detected that type.prototype is a React.Component")
-            console.log(type.protoype)
+            console.log(type)
             // console.log('class componnent props', props)
-            /// Mounting
+            /// Updating (todos, current is wrong)
             /// constructor
             const curInstance = new type(props);
-            // console.log("curInstance", curInstance)
+            console.log("curInstance", curInstance)
 
             // getDerivedStateFromProps
             curInstance.state = type.getDerivedStateFromProps(props, curInstance.state)
@@ -45,6 +36,7 @@ const render = (
 
             // render
             const curReactElement = curInstance.render();
+            curInstance.preVDOM = curReactElement; // NEW CODE FROM PATRICK LIN
             // console.log("curReactElement", curReactElement);
             render(curReactElement, domElement);
             if (curInstance.componentDidmount) {
@@ -56,10 +48,10 @@ const render = (
          
         // Assignment if it is function component
         // FIRST ROUGH ATTEMPT - THE DIRTY METHOD.
-        if (typeof type === 'function') {
-                console.log("The code has detected that React Component is a function")
-                console.log(type);
-        }
+        // if (typeof type === 'function') {
+        //         console.log("The code has detected that React Component is a function")
+        //         console.log(type);
+        // }
         //         let stringVersion = "" + type;
         //         console.log(stringVersion)
         //         let firstSplit = stringVersion.split('return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("');
