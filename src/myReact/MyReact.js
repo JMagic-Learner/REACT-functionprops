@@ -62,6 +62,7 @@ const update = (reactElement,domElement,isRoot
 
         // Assignment if it is function component
         if (typeof type === 'function') {
+           
             console.log("Step 2.B The type has been detected as a function")
             const curReactElement = type(props);
             // console.log("function compoennts TEST", curReactElement)
@@ -98,25 +99,25 @@ const update = (reactElement,domElement,isRoot
         console.log("We are attempting to append to isRoot")
         console.log("your current dom element is",curDom)
         console.log("The element that you are trying to replace CurDOm with is" ,domElement)
-        if (domElement == undefined) {
+        // if (domElement == undefined) {
             console.log(curDom)
             console.log("domElement is undefined")
             console.log("reactElement.type is ", reactElement.type)
 
-            let targetHTML = document.getElementById('root');
+            // let targetHTML = document.getElementById('root');
             // WAIT A MINUTE. REACT ELEMENT IS A FUNCTIONAL COMPONENT. WE CAN JUST RERENDER THIS.
-            render(reactElement,targetHTML)
-        } else {
-            console.log("domelement is defined")
-            console.log("domElement.children" , domElement.props.children.props.data)
-            if (domElement.childNodes != undefined) {
-            console.log(domElement.childNodes[0])
-            domElement.replaceChild(curDom, domElement.childNodes[0]);
-            } else {
-            console.log(domElement)
-            domElement.appendChild(curDom)
-            }
-        }
+            render(reactElement,domElement)
+        // } else {
+        //     console.log("domelement is defined")
+        //     console.log("domElement.children" , domElement.props.children.props.data)
+        //     if (domElement.childNodes != undefined) {
+        //     console.log(domElement.childNodes[0])
+        //     domElement.replaceChild(curDom, domElement.childNodes[0]);
+        //     } else {
+        //     console.log(domElement)
+        //     domElement.appendChild(curDom)
+        //     }
+        // }
         return;
     }
         

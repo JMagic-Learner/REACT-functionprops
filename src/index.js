@@ -1,7 +1,9 @@
 import React from 'react';
 import MyReactDOM from './myReact/MyReactDom';
 import MyReact from './myReact/MyReact';
+// import Counter from './component/Counter'
 import './index.css';
+import App from './App';
 
 function Counter( props) {
   console.log(props.data);
@@ -64,6 +66,7 @@ class Main extends MyReact.Component {
 
   render(){
     return(<div id="main-container">
+      {/* <Counter/> */}
       <Counter data={this.state.counter} parentFunction={this.datapull}/>
       </div>
     )
@@ -122,8 +125,8 @@ class Main extends MyReact.Component {
 // console.log("Counter", Counter)
 // console.log("<Counter/>", <Counter />)
 
-
-MyReactDOM.render( <Main/>, document.getElementById('root'));
+export default Main;
+MyReactDOM.render( <App/>, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -16,7 +16,10 @@ const render = (
         curDom =
             document.createTextNode(reactElement);
     } else {
+        console.log(reactElement)
         const { type, props } = reactElement;
+        console.log("This is the type", type)
+        console.log("This is the prop", props)
    
         /// if type is ClassCompoennt
         // Jason Ma: Comments 6/14/2022 - Following code is from ANTRA class.
@@ -25,10 +28,11 @@ const render = (
             console.log(type)
             // console.log('class componnent props', props)
             /// Updating (todos, current is wrong)
+            // TODO: Implement 
             /// constructor
             const curInstance = new type(props);
             console.log("curInstance", curInstance)
-
+            curInstance.parentDomElement = domElement;
             // getDerivedStateFromProps
             curInstance.state = type.getDerivedStateFromProps(props, curInstance.state)
             console.log("index.js has returned a state from getDerivedProps")
@@ -80,6 +84,7 @@ const render = (
             render(ReactElementArray, domElement); // Feed the dom element and 
             return;
           }
+          
        
 
         curDom = document.createElement(type);
